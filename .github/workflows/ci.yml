@@ -25,11 +25,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Zainstalowanie zależności z pliku requirements.txt
-
+          
       - name: Run tests
         run: |
           pytest  # Zakładając, że masz testy napisane w pytest
-
+          
       - name: Upload code coverage results
         uses: codecov/codecov-action@v2
         with:
