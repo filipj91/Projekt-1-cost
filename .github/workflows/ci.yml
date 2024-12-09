@@ -3,14 +3,14 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Uruchomienie CI przy pushu do gałęzi "main"
+      - main
   pull_request:
     branches:
-      - main  # Uruchomienie CI przy PR do gałęzi "main"
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Uruchomienie na maszynie z systemem Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -19,18 +19,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Wersja Pythona, której będziesz używać
+          python-version: '3.8'  # Dopasuj do swojej wersji
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Zainstalowanie zależności z pliku requirements.txt
-          
-      - name: Run tests
+          pip install -r requirements.txt  # Plik z zależnościami
+
+      - name: Run script
         run: |
-          pytest  # Zakładając, że masz testy napisane w pytest
-          
-      - name: Upload code coverage results
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}  # Jeśli używasz Codecov do raportowania pokrycia kodu
+          python COST_INSURECNE08.12ipynb
